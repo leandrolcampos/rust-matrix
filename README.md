@@ -79,7 +79,7 @@ This library uses the [Rayon](https://docs.rs/rayon/latest/rayon/) library to di
 
 SIMD refers to the ability of every logical core in a CPU (or GPU) to apply the same instruction to a vector of data simultaneously. For this reason, it is also called _vectorization_. Contrary to multithreading, SIMD is automatic; it is applied by the compiler "outside of my control". To encourage the compiler to vectorize my implementation of matrix multiplication, I coded its innermost loop in such a way that: it sequentially accesses coalescent data, and it applies the same simple instructions in each iteration (for instance, because of Rust's bounds checking, this implies not using indexes).
 
-For two 1,000-by-1,000 matrices of type `Matrix<f64>`, the matrix multiplication of this library takes 0.144 seconds to execute on our Razer Blade 2015. The version of the Rust compiler is `1.68.0-nightly`. A naive matrix multiplication code, by contrast, takes 3.311 seconds to complete on the same machine: it is about 23x slower. Use `cargo` to reproduce this benchmark on your machine:
+For two 1,000-by-1,000 matrices of type `Matrix<f64>`, the matrix multiplication of this library takes 0.144 seconds to execute on my Razer Blade 2015. The version of the Rust compiler is `1.68.0-nightly`. A naive matrix multiplication code, by contrast, takes 3.311 seconds to complete on the same machine: it is about 23x slower. Use `cargo` to reproduce this benchmark on your machine:
 
 ```bash
 cargo bench -p matrix_multiplication
